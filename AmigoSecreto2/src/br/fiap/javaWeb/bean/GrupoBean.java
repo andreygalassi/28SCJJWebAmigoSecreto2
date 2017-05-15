@@ -48,6 +48,7 @@ public class GrupoBean {
 ////				grupo.getUsuarios().add(u);
 //			}			
 //			grupo.setUsuarios(usuariosSelecionados);
+//			grupo.setUsuarios(usuarioDao.getUsuarios(usuariosSelecionados));
 			grupo.setUsuarios(usuarioDao.listar());
 			if (grupo.getId()==null){
 //				grupo.setUsuarios(usuarioDao.listar());
@@ -76,13 +77,14 @@ public class GrupoBean {
 	}
 	
 	public void onRowSelect(SelectEvent event) {
-		usuariosSelecionados=new ArrayList<Usuario>();
+//		usuariosSelecionados=new ArrayList<Usuario>();
 		UsuarioDao usuarioDao = new UsuarioDao();
-//		usuarios = usuarioDao.listar();
-		idSelecionado=((Grupo) event.getObject()).getId();
+		usuarios = usuarioDao.listar();
+//		idSelecionado=((Grupo) event.getObject()).getId();
 		grupo = dao.buscar(((Grupo) event.getObject()).getId());
 		grupoSelecionado = dao.buscar(((Grupo) event.getObject()).getId());
-		usuariosSelecionados = grupoSelecionado.getUsuarios();
+//		usuariosSelecionados = grupoSelecionado.getUsuarios();
+		usuariosSelecionados = usuarioDao.getUsuarios(grupoSelecionado.getUsuarios());
     }
  
     public void onRowUnselect(UnselectEvent event) {

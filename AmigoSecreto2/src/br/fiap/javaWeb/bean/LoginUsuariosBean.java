@@ -60,7 +60,7 @@ public class LoginUsuariosBean {
 	//action
 	public String validarUsuario() throws Exception{
 		if (usuario!=null){
-			Usuario u = dao.getUsuario(usuario.getEmail(), usuario.getSenha());
+			Usuario u = dao.getUsuario(usuario.getNome(), usuario.getSenha());
 			if (u!=null){
 				FacesContext fc = FacesContext.getCurrentInstance();
 				HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
@@ -101,7 +101,7 @@ public class LoginUsuariosBean {
 	private void start(){
 		if (dao.listar().size()==0){
 			Usuario admin = new Usuario("admin", "admin", Perfil.ADMINISTRADOR);
-			admin.setNome("nome");
+			admin.setNome("admin");
 			dao.adicionar(admin);
 		}
 	}

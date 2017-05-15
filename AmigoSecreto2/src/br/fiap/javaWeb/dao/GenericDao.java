@@ -140,6 +140,28 @@ public class GenericDao<T> implements Dao<T> {
 		}
 		return lista;
 	}
+	@SuppressWarnings("unchecked")
+	public List<T> getList2(String query, Map<String, Collection> parametros){
+		List<T> lista = null;
+		try {
+    		session = HibernateUtil.getSessionFactory().getCurrentSession();
+    		transaction = session.beginTransaction();
+    		Query q = session.createQuery(query);
+    		
+    		for (String key : parametros.keySet()) {
+				q.setParameterList(key, parametros.get(key));
+			}
+    		lista = q.list();
+    		transaction.commit();
+    		
+		} catch (Exception e) {		
+			e.printStackTrace();
+		}    		
+		if (session.isOpen()){
+			session.close();
+		}
+		return lista;
+	}
 	
 	@SuppressWarnings("unchecked")
 	public Collection<T> getCollection(String query, Map<String, Object> parametros){
@@ -217,5 +239,9 @@ public class GenericDao<T> implements Dao<T> {
 	
 	public static Map<String, Object> newQueryParametros(){
 		return new HashMap<String, Object>();
+	}
+	
+	public static Map<String, Collection> newQueryParametros2(){
+		return new HashMap<String, Collection>();
 	}
 }

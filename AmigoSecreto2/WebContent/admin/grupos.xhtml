@@ -18,13 +18,12 @@
 					<p:outputLabel value="Nome: " />
 					<p:inputText value="#{grupoBean.grupo.descricao}" ></p:inputText>
 					
-<!-- 					<p:outputLabel value="Usuarios: " /> -->
-<!-- 			        <p:selectCheckboxMenu id="multiple" value="#{grupoBean.usuariosSelecionados}" label="Usuarios" multiple="true" -->
-<!-- 			                              filter="true" filterMatchMode="startsWith"> -->
-<!-- 			            <f:selectItems value="#{grupoBean.usuarios}" /> -->
-<!-- 			        </p:selectCheckboxMenu> -->
+					<p:outputLabel value="Usuarios: " />
+			        <p:selectCheckboxMenu id="multiple" value="#{grupoBean.usuariosSelecionados}" label="Usuarios" multiple="true" >
+			            <f:selectItems value="#{grupoBean.usuarios}" />
+			        </p:selectCheckboxMenu>
 
-						<p:commandButton value="Gravar" id="ajax" actionListener="#{grupoBean.salvar}" styleClass="ui-priority-primary" update="eventsDT"/>
+						<p:commandButton value="Gravar" id="ajax" actionListener="#{grupoBean.salvar}" styleClass="ui-priority-primary" update="eventsDT" />
 				</h:panelGrid>
 
 			</h:form>
@@ -37,6 +36,9 @@
 			        </p:column>
 			        <p:column headerText="Descricao">
 			            <h:outputText value="#{grupo.descricao}" />
+			        </p:column>
+			        <p:column headerText="Usuarios">
+			            <h:outputText value="#{grupo.usuarios}" />
 			        </p:column>
 			    </p:dataTable>
 
