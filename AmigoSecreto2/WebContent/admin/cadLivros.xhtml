@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Cadastro de Livros</title>
+</h:head>
+<h:body>
+	<ui:composition template="layout.xhtml">
+		<ui:define name="conteudo">
+			<h:form>
+				<h:panelGrid columns="2">
+					<f:facet name="header">
+						<h2>
+							<h:outputText value="Cadastro de Livros" />
+						</h2>
+					</f:facet>
+					<h:outputText value="#{msg.codigo}" />
+					<h:inputText value="#{livrosBean.livro.codigo}" />
+
+					<h:outputText value="#{msg.titulo}" />
+					<h:inputText value="#{livrosBean.livro.titulo}" />
+
+					<h:outputText value="#{msg.autor}" />
+					<h:inputText value="#{livrosBean.livro.autor}" />
+
+					<h:outputText value="#{msg.data}" />
+					<h:inputText value="#{livrosBean.livro.dataPublicacao}">
+						<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"
+							timeZone="GMT-3" />
+					</h:inputText>
+
+					<h:outputText value="#{msg.preco}" />
+					<h:inputText value="#{livrosBean.livro.preco}" />
+
+					<h:outputText />
+					<h:commandButton action="#{livrosBean.incluirLivro}"
+						value="Incluir" />
+				</h:panelGrid>
+				<h:messages showSummary="true" showDetail="true"></h:messages>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

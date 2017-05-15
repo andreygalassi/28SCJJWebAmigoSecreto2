@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Cadastro de Grupos</title>
+</h:head>
+<h:body>
+	<ui:composition template="layout.xhtml">
+		<ui:define name="conteudo">
+			<h:form id="form">
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Id: " />
+					<p:inputText value="#{grupoBean.grupo.id}" readonly="true" ></p:inputText>
+					
+					<p:outputLabel value="Nome: " />
+					<p:inputText value="#{grupoBean.grupo.descricao}" ></p:inputText>
+					
+<!-- 					<p:outputLabel value="Usuarios: " /> -->
+<!-- 			        <p:selectCheckboxMenu id="multiple" value="#{grupoBean.usuariosSelecionados}" label="Usuarios" multiple="true" -->
+<!-- 			                              filter="true" filterMatchMode="startsWith"> -->
+<!-- 			            <f:selectItems value="#{grupoBean.usuarios}" /> -->
+<!-- 			        </p:selectCheckboxMenu> -->
+
+						<p:commandButton value="Gravar" id="ajax" actionListener="#{grupoBean.salvar}" styleClass="ui-priority-primary" update="eventsDT"/>
+				</h:panelGrid>
+
+			</h:form>
+				<p:dataTable id="eventsDT" var="grupo" value="#{grupoBean.lista()}" selectionMode="single" selection="#{grupoBean.grupoSelecionado}" rowKey="#{grupo.id}">
+
+			        <p:ajax event="rowSelect" listener="#{grupoBean.onRowSelect}" update=":form" />
+			        <p:ajax event="rowUnselect" listener="#{grupoBean.onRowUnselect}" update=":form" />
+			        <p:column headerText="Id">
+			            <h:outputText value="#{grupo.id}" />
+			        </p:column>
+			        <p:column headerText="Descricao">
+			            <h:outputText value="#{grupo.descricao}" />
+			        </p:column>
+			    </p:dataTable>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

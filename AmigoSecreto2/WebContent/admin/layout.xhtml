@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet library="css" name="estilos.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+	<p:growl id="messages"/>
+	<div id="cabecalho">
+		<ui:insert name="header">
+			<ui:include src="headerGeral.xhtml"></ui:include>
+		</ui:insert>
+		<ui:insert name="menu">
+			<h:form>
+				<p:menubar>
+			        <p:menuitem value="Usuários" action="#{menuBean.usuarios()}"/>
+			        <p:menuitem value="Grupos" 	action="#{menuBean.grupos()}"/>
+			        <p:menuitem value="Sorteio" action="#{menuBean.sorteio()}"/>
+			    </p:menubar>
+			</h:form>
+		</ui:insert>
+	</div>
+	
+	<div id="formulario">
+		<ui:insert name="conteudo">
+		</ui:insert>
+	</div>
+	<div id="formulario">
+		<ui:insert name="erro">
+		</ui:insert>
+	</div>
+	
+</h:body>
+</html>

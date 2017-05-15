@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Cadastro de Compradores</title>
+</h:head>
+<h:body>
+	<ui:composition template="layout.xhtml">
+		<ui:define name="conteudo">
+			<h:form>
+				<h:panelGrid columns="2">
+					<f:facet name="header">
+						<h2>
+							<h:outputText value="Cadastro de Compradores" />
+						</h2>
+					</f:facet>
+					<h:outputText value="#{msg.codigol}" />
+					<h:selectOneMenu value="#{compBean.codComprador}">
+						<f:selectItems value="#{livrosBean.listaLivros}"
+					     var="livro"
+						 itemLabel="#{livro.titulo}"
+						 itemValue="#{livro.codigo}" />
+					</h:selectOneMenu>
+
+					<h:outputText value="#{msg.nome}" />
+					<h:inputText value="#{compBean.comprador.nome}" />
+
+					<h:outputText value="#{msg.email}" />
+					<h:inputText value="#{compBean.comprador.email}" />
+
+
+					<h:outputText />
+					<h:commandButton action="#{compBean.incluirComprador}" value="Incluir" />
+				</h:panelGrid>
+				<h:messages showSummary="true" showDetail="true"></h:messages>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

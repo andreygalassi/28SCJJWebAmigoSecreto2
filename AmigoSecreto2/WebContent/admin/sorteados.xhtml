@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Cadastro de Grupos</title>
+</h:head>
+<h:body>
+<!-- 	<ui:composition template="layout.xhtml"> -->
+<!-- 		<ui:define name="conteudo"> -->
+			<h:form id="form">
+
+			</h:form>
+				<p:dataTable id="eventsDT" var="sorteio" value="#{sorteioBean.listaSorteio()}" rowKey="#{sorteio.id}">
+
+			        <p:column headerText="Id">
+			            <h:outputText value="#{sorteio.id}" />
+			        </p:column>
+			        <p:column headerText="Grupo">
+			            <h:outputText value="#{sorteio.grupo.descricao}" />
+			        </p:column>
+			        <p:column headerText="Amigo Secreto">
+			            <h:outputText value="#{sorteio.sorteado.nome}" />
+			        </p:column>
+			    </p:dataTable>
+
+<!-- 		</ui:define> -->
+<!-- 	</ui:composition> -->
+</h:body>
+</html>
